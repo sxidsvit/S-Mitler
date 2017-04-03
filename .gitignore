@@ -2,4 +2,5 @@
 /dist/
 /.git/
 /app/css/
+/app/img/
 gulpfile_old.js
