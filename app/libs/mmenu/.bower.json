@@ -1,0 +1,38 @@
+{
+  "name": "jQuery.mmenu",
+  "version": "6.0.1",
+  "main": [
+    "dist/jquery.mmenu.all.min.js",
+    "dist/jquery.mmenu.all.css"
+  ],
+  "authors": "Fred Heusschen <info@frebsite.nl>",
+  "description": "The best jQuery plugin for app look-alike on- and off-canvas menus with sliding submenus for your website and webapp.",
+  "keywords": [
+    "app",
+    "list",
+    "listview",
+    "megamenu",
+    "menu",
+    "mmenu",
+    "mobile",
+    "navigation",
+    "off-canvas",
+    "on-canvas",
+    "panels",
+    "submenu"
+  ],
+  "license": "CC-BY-NC-4.0",
+  "dependencies": {
+    "jquery": ">= 1.7.0"
+  },
+  "homepage": "https://github.com/BeSite/jQuery.mmenu",
+  "_release": "6.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v6.0.1",
+    "commit": "1188dfd64542d70239e0f6109a1723f96edd98db"
+  },
+  "_source": "https://github.com/BeSite/jQuery.mmenu.git",
+  "_target": "^6.0.0",
+  "_originalSource": "mmenu"
+}

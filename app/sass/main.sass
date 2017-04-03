@@ -1,0 +1,319 @@
+@import "fonts"
+@import "libs"
+@import "vars"
+
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: #666
+body input:required:valid,
+body textarea:required:valid
+	color: #666
+
+html, body
+	height: 100%
+	font-size: 16px
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.75
+	font-family: $default-font
+	overflow-x: hidden
+	opacity: 1
+	&.ishome
+		.site-header
+			min-height: 700px
+			height: 100vh
+			background-color: $dark
+			color: #fff
+			.top-line	
+				padding-top: 40px
+				position: absolute
+				width: 100%
+				z-index: 1
+
+.h1, .h2, .h3, .h4, .h5, .h6
+	line-height: 1.4
+	text-transform: uppercase
+
+.logo
+	img
+		width: 125px
+		// height: 24px
+		height: auto  // для старых мониторов
+		margin-left: 45px
+
+.phone
+	position: absolute
+	right: 125px
+	top: 44px
+	font-family: firasans, sans-serif
+	font-size: 22px
+	white-space: nowrap   // запрещаем разрыв номера номера телефона при переносе строки
+	.fa
+		color: #555
+		a
+			margin-left: 5px
+			color: #fff
+			&:hover
+				text-decoration: none
+
+section, header
+	position: relative
+	background-size: cover
+	background-position: center
+
+section
+	background-color: #fff
+
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+
+.button
+	display: inline-block
+	border: none
+	color: #fff
+	text-decoration: none
+	background-color: $accent
+	padding: 16px 45px //1em 3em 
+	font-size: 13px
+	text-transform: uppercase
+	font-weight: 600
+	letter-spacing: 3px
+	border-radius: 2px
+	text-align: center
+	position: relative
+	outline: none
+	transition: background-color .1s ease
+	&::after
+		transition: background-color .2s ease
+		position: absolute
+		content: ''
+		height: 4px
+		bottom: 0
+		width: 100%
+		background-color: darken($accent, 50%)
+		opacity: .18
+		border-bottom-left-radius: 2px
+		border-bottom-right-radius: 2px
+		left: 0
+	&:focus, &:hover
+		text-decoration: none
+		color: #fff
+	&:hover
+		background-color: lighten($accent, 5%)
+		&::after
+			opacity: .22
+	&:active
+		background-color: darken($accent, 5%)
+		&::after
+			opacity: .32
+
+.hamburger
+	position: absolute
+	right: 20px
+	top: 40px
+	.hamburger-box
+		width: 26px
+
+.hamburger-inner, .hamburger-inner:before, .hamburger-inner:after
+	width: 38px
+	height: 2px
+	background-color: #fff
+	border-radius: 0
+
+.mm-navbar
+	height: auto
+	position: relative	
+	border: 0px
+	.mm-title
+		padding: 0		
+		img
+			width: 125px
+			height: auto  // для старых мониторов
+			margin: 10px 0 35px
+
+// Панель меню 
+
+html.mm-opened
+	overflow-y: scroll
+.mm-panels > .mm-panel.mm-hasnavbar
+	right: -18px
+.mm-listview > li:not(.mm-divider):after
+	display: none
+
+.mm-menu.mm-theme-black .mm-listview > li.mm-selected > a:not(.mm-next), .mm-menu.mm-theme-black .mm-listview > li.mm-selected > span
+	background-color: transparent
+	color: $accent
+.mm-panels > .mm-panel:after, .mm-panels > .mm-panel:before
+	height: 0
+.mm-panels > .mm-panel > .mm-listview:first-child, .mm-panels > .mm-panel > .mm-navbar + .mm-listview
+	margin-top: 0
+
+.mm-listview 
+	> li
+		> a
+			transition: color 0.25s ease
+			padding:
+				left: 14%
+				right: 14%
+				top: 8px
+			&:hover
+				color: $accent
+				&::before
+					color: $accent
+			&::before
+				content: "\f219"
+				font-family: fontawesome
+				text-decoration: none
+				margin-right: 8px
+				font-size: 10px
+				color: #fff
+				transition: color 0.25s ease
+	> &.active
+			&>a
+				color: $accent
+
+//  flex для header
+
+.header-flex
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	display: flex
+	justify-content: center
+	align-items: center
+
+.header-composition
+	text-align: center
+	position: relative
+	p
+		margin-top: 40px
+	.button
+		margin-top: 25px
+
+.h1
+	font-weight: 100
+	font-size: 64px
+	white-space: nowrap
+	margin: 0
+	line-height: 1.6
+	border-bottom: 1px solid #fff
+
+.welcome
+	p
+		font-size: 14px
+		text-transform: uppercase
+		display: flex
+		align-items: center
+		// justify-content: center
+		white-space: nowrap
+		margin: 0
+		margin-bottom: -10px
+		&::before, &::after
+			content: ''
+			border-bottom: 1px	solid #fff
+			flex: 1 1 auto
+			// height: 1px	
+			// width: 100%
+			// position: relative
+			background-color: #fff
+			display: inline-block
+		span
+			margin: 0 10px
+	strong
+		display: block
+		text-transform: uppercase
+		font-size: 17px
+		margin-top: 20px
+		.fa
+			margin-right: 10px
+			font-size: 12px
+			color: #555
+			&:last-child
+				margin-left: 10px
+				margin-right: inherit
+		// Обходимся без .fa fa-star	
+		// &::before, &::after
+		// 	content: '\f005'
+		// 	font-family: fontawesome
+		// 	margin-right: 10px
+		// 	font-size: 12px
+		// 	color: #555
+		// &::after
+		// 	margin-left: 10px
+		// 	margin-right: inherit
+
+.header-social
+	position: absolute
+	display: flex
+	right: 0
+	top: 0
+	height: 100%
+	border-left: rgba(#fff, 0.1) 1px solid
+	padding: 0 20px 0 18px
+
+.soc
+	margin: auto
+	ul, li
+		margin: 0
+		padding: 0
+		list-style-type: none
+	a
+		display: block
+		color: #2c2c2c
+		font-size: 17px
+		background-color: rgba(#fff, .2)
+		height: 38px
+		width: 38px
+		border-radius: 100%
+		text-align: center
+		margin: 18px 0
+		line-height: 38px
+		transition: background-color 0.25s ease
+		&:hover
+			background-color: rgba(#fff, 0.4)
+
+.header-contacts
+	position: absolute
+	bottom: 0
+	left: 0
+	border-top: rgba(#fff, .15) 1px solid
+	padding: 12.5px 0
+	width: 100%
+	background-color: rgba(#151515, .15)
+	.fa
+		margin-right: 15px
+		color: #555
+	.phone-h
+		font-family: firasans, sans-serif
+		text-align: center
+
+// Футер 
+
+#my-footer 
+	min-height: 100vh  // отладка
+
+@import "media" // Всегда в конце

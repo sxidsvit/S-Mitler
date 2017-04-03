@@ -1,0 +1,3 @@
+[0330/212743.055:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\temp\settings.dat: Отказано в доступе. (0x5)
+[0330/212743.287:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: Канал был закрыт. (0x6D)
+[0330/212743.357:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\temp\settings.dat: Отказано в доступе. (0x5)
