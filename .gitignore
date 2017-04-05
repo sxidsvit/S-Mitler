@@ -3,4 +3,4 @@
 /.git/
 /app/css/
 /app/img/
-gulpfile_old.js
+gulpfile_old*.js
