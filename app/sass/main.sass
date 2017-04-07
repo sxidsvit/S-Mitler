@@ -128,6 +128,19 @@ section
 		background-color: darken($accent, 5%)
 		&::after
 			opacity: .32
+	&.button-white
+		background: #fff
+		color: #444
+		&::after
+			background-color: rgba(#000, 0.6)
+		&:hover
+			&::after
+				background-color: rgba(#000, 0.2)		
+		&:active
+			&::after
+				background-color: rgba(#000, 0.4)		
+
+
 
 .hamburger
 	position: absolute
@@ -311,14 +324,116 @@ html.mm-opened
 		font-family: firasans, sans-serif
 		text-align: center
 
+
+// length($list) - Returns the length of a list
+// nth($list, $n) - Returns a specific item in a list.
+// Можно использовать переменные SassScript в селекторах 
+// и в названиях свойств  - синтаксис #{} интерполяции
+// Подробнее об этом - https://sass-scss.ru/documentation/sassscript/mapi.html
+
 $colors: $blue, $red, $accent
 @for $i from 1 through length($colors)
 	.carousel-sevices .owl-item:nth-child(#{length($colors)}n + #{$i})
 		background-color: nth($colors, $i)
 
+.carousel-sevices
+	background-color: $dark
+
+	&-item
+		color: #fff
+		font-size: 18px
+		font-weight: 300
+		position: relative
+		display: flex
+		flex-direction: column-reverse
+		&:hover
+			.carousel-sevices-image
+				opacity: 1
+		.carousel-logo
+			text-align: center
+			img
+				width: 100px
+				height: auto
+				display: inline-block
+
+	&-image
+		background-size: cover
+		background-position: center
+		opacity: .7
+		transition: opacity 0.5s ease
+
+	&-content
+		// display: flex
+		position: relative
+		padding: 60px 10%
+
+	&-composition
+		text-align: center
+		margin: auto
+		width: 100%
+		h3
+			font-weight: 800
+			font-size: 28px
+			margin-top: 5px
+			margin-bottom: 20px
+			span
+				font-weight: normal
+				font-size: 18px
+				font-weight: 300
+				display: block
+
+	&-list
+		padding: 0
+		margin: 0
+		list-style-type: none
+		margin-bottom: 25px
+		li
+			padding: 10px
+			border-bottom: 1px solid rgba(#000, .12)
+			&:last-child
+				border-bottom: none
+			strong
+				font-family: firasans, sans-serif
+				color: #4a4a4a
+				.fa
+					font-size: 14px
+
+	.owl-nav
+		position: absolute
+		top: 0
+		width: 100%
+		> div
+				width: 64px
+				height: 64px
+				// border-radius: 100%
+				background-color: #fff
+				color: $dark
+				position: absolute
+				text-align: center
+				line-height: 64px
+				font-size: 26px
+				&.owl-prev
+					left: 0
+				&.owl-next
+					right: 0
+
+
+
+
+
+.owl-item
+	&:nth-child(2n+2)
+		.carousel-sevices-item
+			flex-direction: column
+
+//должна ли быть видна задняя сторона элемента или нет, когда фронтальная сторона не повернута
+.owl-carousel
+	.owl-item
+		backface-visibility: inherit
+
 // Футер 
 
 #my-footer 
-	min-height: 100vh  // отладка
+	// min-height: 100vh  // отладка
 
 @import "media" // Всегда в конце

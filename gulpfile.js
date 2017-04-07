@@ -50,6 +50,7 @@ gulp.task('js', ['common-js'], function() {
 		'app/libs/jquery/dist/jquery.min.js', // Берем jQuery
 		'app/libs/mmenu/dist/jquery.mmenu.all.min.js',  // Подключаем mmenu
 		'app/libs/owl.carousel/dist/owl.carousel.min.js', // Подключаем owl.carousel
+		'app/libs/equal-height/dist/jquery.equalHeight.min.js', // Подключаем equal-height
 		'app/js/common.min.js' // Всегда в конце
 		])
 		.pipe(concat('scripts.min.js')) // Собираем их в кучу в новом файле libs.min.js
@@ -69,7 +70,7 @@ gulp.task('clean', function() {
 });
 
 gulp.task('img', function() {
-	return gulp.src('app/img/**/*') // Берем все изображения из app
+	return gulp.src(['app/img/**/*']) // Берем все изображения из app
 		.pipe(cache(imagemin({  // Сжимаем их с наилучшими настройками с учетом кеширования
 			interlaced: true,
 			progressive: true,
