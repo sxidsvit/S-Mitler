@@ -30,7 +30,8 @@ gulp.task('browser-sync', function() { // Создаем таск browser-sync
 		server: { // Определяем параметры сервера
 			baseDir: 'app' // Директория для сервера - app
 		},
-		notify: false // Отключаем уведомления
+		notify: false, // Отключаем уведомления
+		open: false // for headless environment
 	});
 });
 
@@ -51,10 +52,11 @@ gulp.task('js', ['common-js'], function() {
 		'app/libs/mmenu/dist/jquery.mmenu.all.min.js',  // Подключаем mmenu
 		'app/libs/owl.carousel/dist/owl.carousel.min.js', // Подключаем owl.carousel
 		'app/libs/equal-height/dist/jquery.equalHeight.min.js', // Подключаем equal-height
+		// 'app/libs/equal-height/dist/jquery.equalHeight.js', // Подключаем equal-height
 		'app/js/common.min.js' // Всегда в конце
 		])
 		.pipe(concat('scripts.min.js')) // Собираем их в кучу в новом файле libs.min.js
-		.pipe(uglify()) // Сжимаем JS файл
+		// .pipe(uglify()) // Сжимаем JS файл
 		.pipe(gulp.dest('app/js')) // Выгружаем в папку app/js
 		.pipe(browserSync.reload({stream: true})) // Обновляем JS на странице при изменении;
 });

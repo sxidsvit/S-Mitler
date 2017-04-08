@@ -32,7 +32,8 @@ $(document).ready(function() {
 
 $('.carousel-sevices').on('initialized.owl.carousel', function(){
       setTimeout(function () {
-          carouselService()
+          carouselService();
+          // $(this).equalHeight();
          }, 
         100);
     });
@@ -56,11 +57,14 @@ $('.carousel-sevices').on('initialized.owl.carousel', function(){
     }
    });  
 
-$('.carousel-sevices-content').equalHeight({
-  resizeTimeout: 100, 
-  updateOnDOMReady: true, 
-  updateOnDOMLoad: true 
-});
+$('.carousel-sevices-content').equalHeight(
+  {
+    groupByTop: false,
+    resizeTimeout: 20, 
+    updateOnDOMReady: true, 
+    updateOnDOMLoad: true 
+  }
+);
 
 $('.carousel-sevices-composition .h3').each(function() {
   var ths = $(this);
