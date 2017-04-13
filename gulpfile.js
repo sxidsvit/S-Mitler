@@ -52,7 +52,7 @@ gulp.task('js', ['common-js'], function() {
 		'app/libs/mmenu/dist/jquery.mmenu.all.min.js',  // Подключаем mmenu
 		'app/libs/owl.carousel/dist/owl.carousel.min.js', // Подключаем owl.carousel
 		'app/libs/equal-height/dist/jquery.equalHeight.min.js', // Подключаем equal-height
-		// 'app/libs/equal-height/dist/jquery.equalHeight.js', // Подключаем equal-height
+		'app/libs/fotorama/fotorama.js', // Подключаем fotorama
 		'app/js/common.min.js' // Всегда в конце
 		])
 		.pipe(concat('scripts.min.js')) // Собираем их в кучу в новом файле libs.min.js

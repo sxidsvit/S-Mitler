@@ -82,6 +82,15 @@ section, header
 
 section
 	background-color: #fff
+	&.inverse
+		color: #fff
+		background-color: $dark
+	.h2
+		font-size: 30px
+		font-weight: 800
+		color: $accent
+		span
+			color: #fff
 
 
 .img-responsive
@@ -434,6 +443,61 @@ $colors: $blue, $red, $accent
 .owl-carousel
 	.owl-item
 		backface-visibility: inherit
+
+// Фоторама
+
+.s
+	&-king, &-review, &-partner
+		padding: 5% 0	
+	&-king
+		p
+			margin: 30px 0
+			font-size: 18px
+
+.section-overley
+	&::before
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		background-color: $over
+		opacity: .92
+
+.fotorama
+	background-color: rgba($dark, .4)
+	&__nav
+		&-wrap
+			position: absolute
+			bottom: 15px
+			padding: 0 30px
+			width: 100%
+	&__thumb
+		border: 5px #fff solid
+		transition: border-color .5s ease
+		&-border
+			border-color: darken($accent, 30%)
+	&__nav:before, &__stage:before, &__nav:after, &__stage:after
+		display: none
+	&__arr-
+		&-next, &-prev
+			&::before
+				font-family: fontawesome
+				font-size: 36px
+		&-prev
+			&::before
+				content: '\f104'
+		&-next
+			&::before
+				content: '\f105'
+	&__active
+		.fotorama__thumb
+			border-color: darken($accent, 30%)
+			
+.s-king .fotorama__wrap--css3 .fotorama__arr
+		transform: translate3d(8px, 0, 0) // позиционируем стрелки 
+
 
 // Футер 
 
