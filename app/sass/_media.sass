@@ -11,6 +11,8 @@
 	.s
 		&-king, &-review, &-partner		
 			padding: 8%
+		&-call
+			background-size: cover
 
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 992px)
@@ -20,6 +22,11 @@
 	.header-contacts
 		.phone-h
 			text-align: left
+	.s-call
+		&::before
+			width: 100%
+		.callback
+			padding: 12% 0
 
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px)

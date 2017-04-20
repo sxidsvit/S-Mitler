@@ -53,6 +53,7 @@ gulp.task('js', ['common-js'], function() {
 		'app/libs/owl.carousel/dist/owl.carousel.min.js', // Подключаем owl.carousel
 		'app/libs/equal-height/dist/jquery.equalHeight.min.js', // Подключаем equal-height
 		'app/libs/fotorama/fotorama.js', // Подключаем fotorama
+		'app/libs/selectize/dist/js/standalone/selectize.min.js', // Подключаем selectize
 		'app/js/common.min.js' // Всегда в конце
 		])
 		.pipe(concat('scripts.min.js')) // Собираем их в кучу в новом файле libs.min.js
@@ -95,7 +96,7 @@ gulp.task('build', ['clean', 'img', 'sass', 'js'], function() {
 	var buildJs = gulp.src('app/js/scripts.min.js') // Переносим скрипты в продакшен
 	.pipe(gulp.dest('dist/js'))
 
-	var buildHtml = gulp.src('app/*.html') // Переносим HTML в продакшен
+	var buildHtml = gulp.src(['app/*.html', 'app/mail.php']) // Переносим HTML в продакшен
 	.pipe(gulp.dest('dist'));
 
 });

@@ -18,12 +18,12 @@
 	color: #666
 	opacity: 1
 
-body input:focus:required:invalid,
-body textarea:focus:required:invalid
-	color: #666
-body input:required:valid,
-body textarea:required:valid
-	color: #666
+// body input:focus:required:invalid,
+// body textarea:focus:required:invalid
+// 	color: #666
+// body input:required:valid,
+// body textarea:required:valid
+// 	color: #666
 
 html, body
 	height: 100%
@@ -454,6 +454,23 @@ $colors: $blue, $red, $accent
 			margin: 30px 0
 			font-size: 18px
 
+	&-call
+		background-size: contain
+		background-repeat: no-repeat
+		background-position: -20% 10%
+		&::before
+			content: ''
+			position: absolute
+			width: 50%
+			height: 100%
+			right: 0
+			top: 0
+			bottom: 0
+			background-color: rgba($accent, 0.92)
+		&.inverse
+			background-color: #fff
+
+
 .section-overley
 	&::before
 		content: ''
@@ -467,6 +484,8 @@ $colors: $blue, $red, $accent
 
 .fotorama
 	background-color: rgba($dark, .4)
+	// &__video-play
+	// 	background: url(/img/fotorama.png) // попытка избавиться от png-картинок
 	&__nav
 		&-wrap
 			position: absolute
@@ -497,6 +516,120 @@ $colors: $blue, $red, $accent
 			
 .s-king .fotorama__wrap--css3 .fotorama__arr
 		transform: translate3d(8px, 0, 0) // позиционируем стрелки 
+
+input, textarea, select,
+.selectize-control.single .selectize-input,
+.selectize-control.single .selectize-input.input-active,
+	background-color: transparent
+	border: rgba(#000, .1) 1px solid
+	border-bottom: rgba(#000, .1) 2px solid
+	border-radius: 2px
+	padding: 8px 22px
+	outline: none
+	display: inline-block
+	font-size: 16px
+	color: #333
+select
+	padding: 10px 22px
+
+.selectize-control.single .selectize-input
+	margin-top: 17px
+	color: #fff
+	box-shadow: none
+	overflow: inherit
+	line-height: inherit
+	text-align: left
+	input
+		font-size: 16px
+	&.focus
+		box-shadow: none
+		// box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
+	&.dropdown-active::before
+		background: transparent
+	&::after
+		border: none
+		content: '\f107'
+		font-family: fontawesome
+		position: absolute
+		right: 30px
+		top: 12px
+	&.dropdown-active:after
+		content: '\f106'
+
+.selectize-control.single
+	.selectize-dropdown 
+		font-size: 15px
+		border: none
+		border-radius: 0
+		text-align: left
+		&-content
+			.option
+				padding: 10px 22px
+				&.active 
+					background-color: lighten($accent, 15%)
+
+.success
+	display: none
+	position: absolute
+	top: 0
+	left: 0
+	bottom: 0
+	right: 0
+	text-transform: uppercase
+	font-weight: bold
+	// display: flex
+	z-index: 10
+	span
+		margin: auto
+	& ~ *
+		transition: all 0.5s ease
+	&.active
+		& ~ *
+			opacity: .5
+			filter: blur(12px)
+
+
+
+.callback
+	padding: 25% 0
+	position: relative
+	&-logo
+		img
+			width: 100px
+			height: auto
+
+	.formhead
+		margin: 0
+		font-size: 30px
+		color: #fff
+
+	p
+		margin-top: 0
+
+	input, textarea, select
+	 	color: #fff
+	 	width: 100%
+	 	margin-top: 17px
+
+	 	&::-webkit-input-placeholder
+		 	color: #fff
+		 	opacity: 1
+	 	&::-moz-placeholder
+		 	color: #fff
+		 		opacity: 1
+	 	&::-ms-input-placeholder
+	 	 	color: #fff
+
+	select
+		option
+			color: #333
+
+	button
+		margin-top: 40px
+
+	
+
+
 
 
 // Футер 
