@@ -623,12 +623,48 @@ select
 	 	&::-ms-input-placeholder
 	 	 	color: #fff
 
+	input[name="Телефон"]
+		font-family: firasans
+
 	select
 		option
 			color: #333
 
+// Стилизация валидации форм 
+.callback
+	position: relative
+	input.error
+		border-color: darken($red, 7%)
+	label.error
+		color: $red
+		font-size: 10px
+		margin-left: 22px
+	input.valid
+		border-color: lighten($green, 57%)
+
+	.form-message
+		position: absolute
+		bottom: 18%
+		left: 0
+		transform: rotate(-0deg)
+		z-index: 1		
+		text-align: center
+		background-color: lighten($red, 2%)
+		font-size: 14px
+		font-weight: 600	
+			
+		color: #fff
+		display: block
+		padding: 10px
+		width: 100%
+		margin-top: 10px
+		&:empty
+			display: none
+
 	button
 		margin-top: 40px
+
+// конец стилизации валидации формы
 
 .reviews
 	text-align: center

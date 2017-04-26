@@ -54,6 +54,7 @@ gulp.task('js', ['common-js'], function() {
 		'app/libs/equal-height/dist/jquery.equalHeight.min.js', // Подключаем equal-height
 		'app/libs/fotorama/fotorama.js', // Подключаем fotorama
 		'app/libs/selectize/dist/js/standalone/selectize.min.js', // Подключаем selectize
+		'app/libs/jquery-validation/dist/jquery.validate.min.js', // Подключаем jquery-validation
 		'app/js/common.min.js' // Всегда в конце
 		])
 		.pipe(concat('scripts.min.js')) // Собираем их в кучу в новом файле libs.min.js

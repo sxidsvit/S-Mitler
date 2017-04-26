@@ -93,6 +93,50 @@ $("form.callback").submit(function() { //Change
   return false;
 });
 
+// Form validation
+$('#callback-form').validate({
+  rules: {
+    Имя: {
+      required: true
+    },
+    Телефон: {
+       required: true,
+       digits: true
+    },
+    //   Услуга: {
+    //    required: true
+    // }
+  },
+
+  messages: {
+     Имя: {
+      required: "Укажите пожалуйста ваше имя"
+    },
+    Телефон: {
+       required: "Укажите пожалуйста ваш телефон",
+       digits: "Номер должен содержать только цифры"
+    },
+    // Услуга: {
+    //    required: "Выбирите пожалуйста услугу"
+    // }
+  }, 
+
+  focusCleanup: true,
+  // focusInvalid: false,
+  invalidHandler: function(event, validator) {
+    $('.callback .form-message').text("Пожалуйста внимательно заполните форму");
+  },
+  onkeyup: function(element) {
+    $('.callback .form-message').text("");
+  },
+  errorPlacement: function(error, element) {
+    return true;
+  }
+
+
+});
+
+
 // Resize Window
 
   window.onresize = function() {
