@@ -450,7 +450,7 @@ $colors: $blue, $red, $accent
 // Фоторама
 
 .s
-	&-king, &-review, &-partner
+	&-king, &-review, &-partners
 		padding: 5% 0	
 	&-king
 		p
@@ -472,6 +472,15 @@ $colors: $blue, $red, $accent
 			background-color: rgba($accent, 0.92)
 		&.inverse
 			background-color: #fff
+
+	&-partners.section-overlay
+		&::before
+			background-color: #fff
+		.h2
+			margin-top: 10px
+			span
+				color: $accent
+
 
 
 .section-overlay
@@ -728,6 +737,39 @@ select
 		right: -60px
 		transform: rotate(0deg)
 
+// Карусель Партнеры
+.s-partners
+	padding-bottom: 7%
+.partners
+	.owl-stage
+		display: flex
+	.owl-item
+		margin-top: 30px
+	.partner
+		display: flex
+		img
+			max-width: 100%
+			width: auto
+			margin: auto
+	.owl-nav
+		position: absolute
+		top: 0
+		width: 100%
+		z-index: 2
+		> div
+			position: absolute
+			top: 32px
+			color: #999
+			font-size: 30px
+			transition: opacity .5s ease
+			padding: 0 10px
+			&:hover
+				opacity: .5
+			&.owl-prev
+				left: -60px
+			&.owl-next
+				right: -60px
+	
 
 
 // Футер 

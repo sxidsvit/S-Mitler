@@ -48,6 +48,7 @@ $('.carousel-sevices').on('initialized.owl.carousel', function(){
     nav: true,
     dots: false, 
     navText: ['<i class = "fa fa-angle-double-left"></i>', '<i class = "fa fa-angle-double-right"></i>'],  
+    responsiveClass: true,
     smartSpeed: 700,
     responsive: {
       0: {items: 1},
@@ -74,6 +75,22 @@ $('.reviews').owlCarousel({
     smartSpeed: 700,
     nav: false,
     autoHeight: true
+});
+
+$('.partners').owlCarousel({
+    loop: true,
+    smartSpeed: 700,
+    dots: false, 
+    nav: true,
+    navText: ['<i class = "fa fa-angle-left"></i>', '<i class = "fa fa-angle-right"></i>'],  
+    responsiveClass: true,
+    responsive: {
+      0: {items: 1},
+      768: {items: 2},
+      992: {items: 3},
+      1200: {items: 4}
+    }
+
 });
 
 //E-mail Ajax Send with form validation
