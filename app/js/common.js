@@ -76,64 +76,64 @@ $('.reviews').owlCarousel({
     autoHeight: true
 });
 
-//E-mail Ajax Send
-$("form.callback").submit(function() { //Change
-  var th = $(this);
-  $.ajax({
-    type: "POST",
-    url: "mail.php", //Change
-    data: th.serialize()
-  }).done(function() {
-    th.find('.success').addClass('active').css('display', 'flex').hide().fadeIn();
-    setTimeout(function() {
-      th.find('.success').removeClass('active').css('display', 'none').fadeOut();
-      th.trigger("reset")
-    }, 3000);
-  });
-  return false;
+//E-mail Ajax Send with form validation
+$("form.callback").submit(function() { 
+ if(validator.form()) {
+    var th = $(this);
+    $.ajax({
+      type: "POST",
+      url: "mail.php", //Change
+      data: th.serialize()
+    }).done(function() {
+      th.find('.success').addClass('active').css('display', 'flex').hide().fadeIn();
+      setTimeout(function() {
+        th.find('.success').removeClass('active').css('display', 'none').fadeOut();
+        th.trigger("reset")
+      }, 3000);
+    });
+    return false;
+  }
 });
 
 // Form validation
-$('#callback-form').validate({
-  rules: {
-    Имя: {
-      required: true
-    },
-    Телефон: {
-       required: true,
-       digits: true
-    },
-    //   Услуга: {
-    //    required: true
-    // }
-  },
+ var validator = $('#callback-form').validate({
+      rules: {
+        Имя: {
+          required: true
+        },
+        Телефон: {
+           required: true,
+           digits: true
+        },
+        //   Услуга: {
+        //    required: true
+        // }
+      },
 
-  messages: {
-     Имя: {
-      required: "Укажите пожалуйста ваше имя"
-    },
-    Телефон: {
-       required: "Укажите пожалуйста ваш телефон",
-       digits: "Номер должен содержать только цифры"
-    },
-    // Услуга: {
-    //    required: "Выбирите пожалуйста услугу"
-    // }
-  }, 
+      messages: {
+         Имя: {
+          required: "Укажите пожалуйста ваше имя"
+        },
+        Телефон: {
+           required: "Укажите пожалуйста ваш телефон",
+           digits: "Номер должен содержать только цифры"
+        },
+        // Услуга: {
+        //    required: "Выбирите пожалуйста услугу"
+        // }
+      }, 
 
-  focusCleanup: true,
-  // focusInvalid: false,
-  invalidHandler: function(event, validator) {
-    $('.callback .form-message').text("Пожалуйста внимательно заполните форму");
-  },
-  onkeyup: function(element) {
-    $('.callback .form-message').text("");
-  },
-  errorPlacement: function(error, element) {
-    return true;
-  }
-
-
+      focusCleanup: true,
+      // focusInvalid: false,
+      invalidHandler: function(event, validator) {
+        $('.callback .form-message').text("Пожалуйста внимательно заполните форму");
+      },
+      onkeyup: function(element) {
+        $('.callback .form-message').text("");
+      },
+      errorPlacement: function(error, element) {
+        return true;
+      }
 });
 
 
