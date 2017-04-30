@@ -775,6 +775,113 @@ select
 // Футер 
 
 #my-footer 
-	// min-height: 100vh  // отладка
+	background: #242424
+	padding: 3% 0
+	color: #fff
+	font-size: 14px
+
+.footer-column
+	margin: 15px 0
+
+.footer-logo	
+	width: 125px
+	height: auto
+	+ p
+		color: #666
+		padding: 0
+		margin:
+			bottom: 15px
+			top: 15px
+		font-size: 14px
+
+.footer-social
+	margin-top: 38px
+	.soc
+		li
+			display: inline-block
+			margin: 4px
+			a
+				color: #ababab
+				margin-bottom: 0
+				transition: color .5s ease, background-color .5s ease
+				&:hover
+					color: rgba(#fff, .8)
+
+.footer-menu
+	ul
+		padding: 0
+		margin: 0
+		list-style-type: none
+		li.active
+			a
+				color: $accent
+				&::before
+					color: $accent
+		li
+			a
+				color: #979797
+				transition: color .25s ease
+				display: inline-block
+				padding: 4px 0
+				text-decoration: underline
+				padding-left: 22px
+				position: relative
+				&:hover, &:focus
+					color: $accent
+					&::before
+						color: $accent
+				&::before
+					position: absolute
+					font-family: fontawesome
+					font-size: 12px
+					color: #fff
+					content: '\f219'
+					left: 0
+					top: 6px
+					transition: color .25s ease
+
+.footer-addr
+	position: relative
+	font-size: 14px
+	line-height: 16px
+	color: #979797
+	padding:
+		left: 26px
+		top: 8px
+	margin: 0 0 14px
+	.fa
+		position: absolute
+		left: 0
+		top: 10px
+		font-size: 18px
+		color: #555
+	.footer-phone
+		font-size: 24px
+		font-family: firasans, sans-serif
+		color: lighten(#979797, 20%)
+		padding-top: 4px
+		display: block
+		white-space: nowrap
+		.fa
+			top: 8px
+			font-size: 22px
+			left: 3px
+.footer-map
+	ymaps
+		padding-top: 12px
+	min-height: 200px
+	opacity: .7
+	transition: opacity .5s ease
+	&:hover
+		opacity: 1
+
+
+
+
+
+
+
+
+
 
 @import "media" // Всегда в конце
