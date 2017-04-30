@@ -90,8 +90,28 @@ $('.partners').owlCarousel({
       992: {items: 3},
       1200: {items: 4}
     }
-
 });
+
+// Resize Window
+  window.onresize = function() {
+     carouselService();
+     carouselEqualHeight('.carousel-sevices-content');
+     carouselEqualHeight('.carousel-sevices-image');
+} 
+
+// Курсор Наверх
+$(window).scroll(function(){
+  if ($(this).scrollTop() > $(this).height()) {
+    $('.top').addClass('active');
+  }
+  else {$('.top').removeClass('active');}
+});
+
+$('.top').click(function() {
+  $('html, body').stop().animate({scrollTop: 0}, 'slow', 'swing');
+  });
+
+})  // End document.ready
 
 //E-mail Ajax Send with form validation
 $("form.callback").submit(function() { 
@@ -153,13 +173,7 @@ $("form.callback").submit(function() {
       }
 });
 
-
-// Resize Window
-
-  window.onresize = function() {
-     carouselService();
-     carouselEqualHeight('.carousel-sevices-content');
-     carouselEqualHeight('.carousel-sevices-image');
-} 
-      
-})  // end $(document).ready( ...
+// Прелоадер
+$(window).on('load', function() {
+  $('.preloader').delay(1000).fadeOut('slow');
+})
