@@ -86,7 +86,13 @@ gulp.task('img', function() {
     imagemin.jpegtran({progressive: true}),
     imagemin.optipng({optimizationLevel: 5}),
     imagemin.svgo({plugins: [{removeViewBox: true}]})
-])))
+		]
+		, {verbose: true}
+	)))
+		// .on('success', function(e) {console.log(imagemin.message)})
+		.on("error", notify.onError())
+		// .on("success", notify.logLevel())
+		// .notify.logLevel(2)
 		.pipe(gulp.dest('dist/img')); // Выгружаем на продакшен
 });
 

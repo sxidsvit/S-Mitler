@@ -55,6 +55,7 @@ body
 
 .text-center
 	text-align: center	
+	
 @mixin opacity($opacity)
 	opacity: $opacity / 100
 	// filter: alpha(opacity=$opacity)
@@ -82,31 +83,43 @@ body
 			border-radius: 100%
 			position: absolute
 		&::before
-			animation: pulse-outer .5s ease-in infinite
+			// animation: pulse-outer .9s ease-in infinite
+			animation: pulse-outer 1.8s linear infinite
 		&::after
-			animation: pulse-inner .5s linear infinite
+			// animation: pulse-inner .9s linear infinite
+			animation: pulse-inner 1.8s linear infinite
+			border: 5px solid #fff
+
+// @keyframes pulse-outer 
+// 	0%
+// 		@include opacity(100)
+// 	50%
+// 		@include opacity(50)
+// 	100%
+// 		@include opacity(0)			
+
+// @keyframes pulse-inner 
+// 	0%
+// 		@include opacity(0)
+// 		transform: scale(0)
+// 	100%
+// 		@include opacity(100)	
+// 		transform: scale(1)	
+
+//  Прелоадер http://codepen.io/mr_alien/pen/synHB
 
 @keyframes pulse-outer 
-	0%
-		@include opacity(100)
-	50%
-		@include opacity(50)
-	100%
-		@include opacity(0)			
+  // 0% 
+  //   transform: rotate(0deg) skew(0deg) 
+  100% 
+    transform: rotate(360deg) skew(90deg)
 
 @keyframes pulse-inner 
-	0%
-		@include opacity(0)
-		transform: scale(0)
-	100%
-		@include opacity(100)	
-		transform: scale(1)	
-
-
-
-
-
-
+  // 0% 
+  //   transform: rotate(0deg) skew(0deg)
+  100% 
+    transform: rotate(-360deg) skew(-90deg)
+ 
 
 .logo
 	img
