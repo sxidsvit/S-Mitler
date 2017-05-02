@@ -109,7 +109,7 @@ gulp.task('build', ['clean', 'img', 'sass', 'js'], function() {
 	var buildJs = gulp.src('app/js/scripts.min.js') // Переносим скрипты в продакшен
 	.pipe(gulp.dest('dist/js'))
 
-	var buildHtml = gulp.src(['app/*.html', 'app/mail.php, app/.htaccess']) // Переносим HTML в продакшен
+	var buildHtml = gulp.src(['app/*.html', 'app/mail.php', 'app/.htaccess']) // Переносим HTML в продакшен
 	.pipe(gulp.dest('dist'));
 
 });

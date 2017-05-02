@@ -177,3 +177,12 @@ $("form.callback").submit(function() {
 $(window).on('load', function() {
   $('.preloader').delay(1000).fadeOut('slow');
 })
+
+// Загрузка карты по клику
+
+// $(".footer-map").on('click', function () {
+//   $(this).removeAttr(style);
+//   $(this).html(
+//     <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A32d66fc72ec1dd854f43901e7c9224d5887cd3d018f0bc6c614c610c643c901d&amp;width=100%&amp;height=200&amp;lang=ru_UA&amp;scroll=true"></script>
+//     );
+// })
