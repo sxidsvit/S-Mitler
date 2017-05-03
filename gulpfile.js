@@ -12,12 +12,15 @@ var gulp       = require('gulp'), // Подключаем Gulp
 	autoprefixer = require('gulp-autoprefixer'), // Подключаем библиотеку для автоматического добавления префиксов
 	gutil        = require('gulp-util'),  // Utility functions for gulp plugins
 	ftp          = require('vinyl-ftp'), // Подключаем FTP
-	notify       = require("gulp-notify");
+	notify       = require("gulp-notify"),
+	htmlmin      = require('gulp-htmlmin');  // Сжатие HTML
+
 
 
 gulp.task('sass', function(){ // Создаем таск Sass
 	return gulp.src('app/sass/**/*.sass') // Берем источник
-		.pipe(sass({outputStyle: 'expand'}).on("error", notify.onError()))
+		// .pipe(sass({outputStyle: 'expand'}).on("error", notify.onError()))
+		.pipe(sass({outputStyle: 'compressed'}).on("error", notify.onError()))
 		.pipe(rename({suffix: '.min', prefix : ''}))
 		.pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true })) // Создаем префиксы
 		// .pipe(cleanCSS()) // Опционально, закомментировать при отладке
@@ -75,12 +78,6 @@ gulp.task('clean', function() {
 
 gulp.task('img', function() {
 	return gulp.src(['app/img/**/*']) // Берем все изображения из app
-		// .pipe(cache(imagemin({  // Для версии <3. Сжимаем их с наилучшими настройками с учетом кеширования
-		// 	interlaced: true,
-		// 	progressive: true,
-		// 	svgoPlugins: [{removeViewBox: false}],
-		// 	use: [pngquant()]
-		// 	})))
 	.pipe(cache(imagemin([  //  // Для версии >= 3
     imagemin.gifsicle({interlaced: true}),
     imagemin.jpegtran({progressive: true}),
@@ -89,14 +86,19 @@ gulp.task('img', function() {
 		]
 		, {verbose: true}
 	)))
-		// .on('success', function(e) {console.log(imagemin.message)})
 		.on("error", notify.onError())
-		// .on("success", notify.logLevel())
-		// .notify.logLevel(2)
 		.pipe(gulp.dest('dist/img')); // Выгружаем на продакшен
 });
 
-gulp.task('build', ['clean', 'img', 'sass', 'js'], function() {
+
+gulp.task('html', function() {
+  return gulp.src('app/index.html')
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('dist'));
+});
+
+
+gulp.task('build', ['clean', 'img', 'sass', 'js', 'html'], function() {
 
 	var buildCss = gulp.src([ // Переносим библиотеки в продакшен
 		'app/css/main.min.css'
@@ -109,7 +111,7 @@ gulp.task('build', ['clean', 'img', 'sass', 'js'], function() {
 	var buildJs = gulp.src('app/js/scripts.min.js') // Переносим скрипты в продакшен
 	.pipe(gulp.dest('dist/js'))
 
-	var buildHtml = gulp.src(['app/*.html', 'app/mail.php', 'app/.htaccess']) // Переносим HTML в продакшен
+	var buildHtml = gulp.src(['app/mail.php', 'app/.htaccess']) // Переносим  в продакшен
 	.pipe(gulp.dest('dist'));
 
 });

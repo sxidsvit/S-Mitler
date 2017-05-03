@@ -932,14 +932,25 @@ select
 			font-size: 22px
 			left: 3px
 .footer-map
-	ymaps
-		padding-top: 12px
+	position: relative
 	min-height: 200px
 	opacity: .7
 	transition: opacity .5s ease
 	&:hover
 		opacity: 1
 		cursor: pointer
+	img
+		position: absolute
+		left: 20%
+		bottom: 20%
+		width: 60%
+		height: 60%
+		background-color: $accent
+		opacity: 0
+	ymaps
+		padding-top: 12px
+
+
 
 .top
 	position: fixed
