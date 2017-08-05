@@ -190,4 +190,4 @@ $(".footer-map").on('click', function () {
    script.async = true;
    document.getElementsByClassName("footer-map")[0].appendChild(script);
    $(this).unbind('click');
-}) 
+})  

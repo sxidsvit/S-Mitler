@@ -28,7 +28,7 @@ gulp.task('sass', function(){ // Создаем таск Sass
 		.pipe(browserSync.reload({stream: true})) // Обновляем CSS на странице при изменении
 });
 
-gulp.task('browser-sync', function() { // Создаем таск browser-sync
+gulp.task('browserc-sync', function() { // Создаем таск browser-sync
 	browserSync({ // Выполняем browserSync
 		server: { // Определяем параметры сервера
 			baseDir: 'app' // Директория для сервера - app
@@ -60,7 +60,7 @@ gulp.task('js', ['common-js'], function() {
 		'app/libs/jquery-validation/dist/jquery.validate.min.js', // Подключаем jquery-validation
 		'app/js/common.min.js' // Всегда в конце
 		])
-		.pipe(concat('scripts.min.js')) // Собираем их в кучу в новом файле libs.min.js
+		.pipe(concat('scripts.min.js')) // Собираем их в кучу в новом файле scripts.min.js
 		// .pipe(uglify()) // Сжимаем JS файл
 		.pipe(gulp.dest('app/js')) // Выгружаем в папку app/js
 		.pipe(browserSync.reload({stream: true})) // Обновляем JS на странице при изменении;
