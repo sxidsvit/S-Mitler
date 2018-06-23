@@ -1,0 +1,980 @@
+@import "fonts"
+@import "libs"
+@import "vars"
+
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+
+// body input:focus:required:invalid,
+// body textarea:focus:required:invalid
+// 	color: #666
+// body input:required:valid,
+// body textarea:required:valid
+// 	color: #666
+
+html, body
+	height: 100%
+	font-size: 16px
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.75
+	font-family: $default-font
+	overflow-x: hidden
+	opacity: 1
+	&.ishome
+		.site-header
+			min-height: 700px
+			height: 100vh
+			background-color: $dark
+			color: #fff
+			.top-line	
+				padding-top: 40px
+				position: absolute
+				width: 100%
+				z-index: 1
+
+.h1, .h2, .h3, .h4, .h5, .h6
+	line-height: 1.4
+	text-transform: uppercase
+
+.text-center
+	text-align: center	
+	
+@mixin opacity($opacity)
+	opacity: $opacity / 100
+	// filter: alpha(opacity=$opacity)
+
+.preloader
+	position: fixed
+	top: 0
+	left: 0
+	bottom: 0
+	right: 0
+	z-index: 100
+	background-color: $dark
+	.pulse
+		position: relative
+		left: 50%
+		top: 50%
+		margin: 
+			left: -40px
+			top: -40px
+		&::before, &::after
+			content: ''
+			border: 5px solid $accent
+			width: 80px
+			height: 80px
+			border-radius: 100%
+			position: absolute
+		&::before
+			// animation: pulse-outer .9s ease-in infinite
+			animation: pulse-outer 1.8s linear infinite
+		&::after
+			// animation: pulse-inner .9s linear infinite
+			animation: pulse-inner 1.8s linear infinite
+			border: 5px solid #fff
+
+// @keyframes pulse-outer 
+// 	0%
+// 		@include opacity(100)
+// 	50%
+// 		@include opacity(50)
+// 	100%
+// 		@include opacity(0)			
+
+// @keyframes pulse-inner 
+// 	0%
+// 		@include opacity(0)
+// 		transform: scale(0)
+// 	100%
+// 		@include opacity(100)	
+// 		transform: scale(1)	
+
+//  Прелоадер http://codepen.io/mr_alien/pen/synHB
+
+@keyframes pulse-outer 
+  // 0% 
+  //   transform: rotate(0deg) skew(0deg) 
+  100% 
+    transform: rotate(360deg) skew(90deg)
+
+@keyframes pulse-inner 
+  // 0% 
+  //   transform: rotate(0deg) skew(0deg)
+  100% 
+    transform: rotate(-360deg) skew(-90deg)
+ 
+
+.logo
+	img
+		width: 125px
+		// height: 24px
+		height: auto  // для старых мониторов
+		margin-left: 45px
+
+.phone
+	position: absolute
+	right: 125px
+	top: 44px
+	font-family: firasans, sans-serif
+	font-size: 22px
+	white-space: nowrap   // запрещаем разрыв номера номера телефона при переносе строки
+	.fa
+		color: #555
+		a
+			margin-left: 5px
+			color: #fff
+			&:hover
+				text-decoration: none
+
+section, header
+	position: relative
+	background-size: cover
+	background-position: center
+
+section
+	background-color: #fff
+	&.inverse
+		color: #fff
+		background-color: $dark
+	.h2
+		font-size: 30px
+		font-weight: 800
+		color: $accent
+		span
+			color: #fff
+
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+
+.button
+	display: inline-block
+	border: none
+	color: #fff
+	text-decoration: none
+	background-color: $accent
+	padding: 16px 45px //1em 3em 
+	font-size: 13px
+	text-transform: uppercase
+	font-weight: 600
+	letter-spacing: 3px
+	border-radius: 2px
+	text-align: center
+	position: relative
+	outline: none
+	transition: background-color .1s ease
+	&::after
+		transition: background-color .2s ease
+		position: absolute
+		content: ''
+		height: 4px
+		bottom: 0
+		width: 100%
+		background-color: darken($accent, 50%)
+		opacity: .18
+		border-bottom-left-radius: 2px
+		border-bottom-right-radius: 2px
+		left: 0
+	&:focus, &:hover
+		text-decoration: none
+		color: #fff
+	&:hover
+		background-color: lighten($accent, 5%)
+		&::after
+			opacity: .22
+	&:active
+		background-color: darken($accent, 5%)
+		&::after
+			opacity: .32
+	&.button-white
+		background: #fff
+		color: #444
+		&::after
+			background-color: rgba(#000, 0.6)
+		&:hover
+			&::after
+				background-color: rgba(#000, 0.2)		
+		&:active
+			&::after
+				background-color: rgba(#000, 0.4)		
+
+
+
+.hamburger
+	position: absolute
+	right: 20px
+	top: 40px
+	.hamburger-box
+		width: 26px
+
+.hamburger-inner, .hamburger-inner:before, .hamburger-inner:after
+	width: 38px
+	height: 2px
+	background-color: #fff
+	border-radius: 0
+
+.mm-navbar
+	height: auto
+	position: relative	
+	border: 0px
+	.mm-title
+		padding: 0		
+		img
+			width: 125px
+			height: auto  // для старых мониторов
+			margin: 10px 0 35px
+
+// Панель меню 
+
+html.mm-opened
+	overflow-y: scroll
+.mm-panels > .mm-panel.mm-hasnavbar
+	right: -18px
+.mm-listview > li:not(.mm-divider):after
+	display: none
+
+.mm-menu.mm-theme-black .mm-listview > li.mm-selected > a:not(.mm-next), .mm-menu.mm-theme-black .mm-listview > li.mm-selected > span
+	background-color: transparent
+	color: $accent
+.mm-panels > .mm-panel:after, .mm-panels > .mm-panel:before
+	height: 0
+.mm-panels > .mm-panel > .mm-listview:first-child, .mm-panels > .mm-panel > .mm-navbar + .mm-listview
+	margin-top: 0
+
+.mm-listview 
+	> li
+		> a
+			transition: color 0.25s ease
+			padding:
+				left: 14%
+				right: 14%
+				top: 8px
+			&:hover
+				color: $accent
+				&::before
+					color: $accent
+			&::before
+				content: "\f219"
+				font-family: fontawesome
+				text-decoration: none
+				margin-right: 8px
+				font-size: 10px
+				color: #fff
+				transition: color 0.25s ease
+	> &.active
+			&>a
+				color: $accent
+
+//  flex для header
+
+.header-flex
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	display: flex
+	justify-content: center
+	align-items: center
+
+.header-composition
+	text-align: center
+	position: relative
+	p
+		margin-top: 40px
+	.button
+		margin-top: 25px
+
+.h1
+	font-weight: 100
+	font-size: 64px
+	white-space: nowrap
+	margin: 0
+	line-height: 1.6
+	border-bottom: 1px solid #fff
+
+.welcome
+	p
+		font-size: 14px
+		text-transform: uppercase
+		display: flex
+		align-items: center
+		// justify-content: center
+		white-space: nowrap
+		margin: 0
+		margin-bottom: -10px
+		&::before, &::after
+			content: ''
+			border-bottom: 1px	solid #fff
+			flex: 1 1 auto
+			// height: 1px	
+			// width: 100%
+			// position: relative
+			background-color: #fff
+			display: inline-block
+		span
+			margin: 0 10px
+	strong
+		display: block
+		text-transform: uppercase
+		font-size: 17px
+		margin-top: 20px
+		.fa
+			margin-right: 10px
+			font-size: 12px
+			color: #555
+			&:last-child
+				margin-left: 10px
+				margin-right: inherit
+		// Обходимся без .fa fa-star	
+		// &::before, &::after
+		// 	content: '\f005'
+		// 	font-family: fontawesome
+		// 	margin-right: 10px
+		// 	font-size: 12px
+		// 	color: #555
+		// &::after
+		// 	margin-left: 10px
+		// 	margin-right: inherit
+
+.header-social
+	position: absolute
+	display: flex
+	right: 0
+	top: 0
+	height: 100%
+	border-left: rgba(#fff, 0.1) 1px solid
+	padding: 0 20px 0 18px
+
+.soc
+	margin: auto
+	ul, li
+		margin: 0
+		padding: 0
+		list-style-type: none
+	a
+		display: block
+		color: #2c2c2c
+		font-size: 17px
+		background-color: rgba(#fff, .2)
+		height: 38px
+		width: 38px
+		border-radius: 100%
+		text-align: center
+		margin: 18px 0
+		line-height: 38px
+		transition: background-color 0.25s ease
+		&:hover
+			background-color: rgba(#fff, 0.4)
+
+.header-contacts
+	position: absolute
+	bottom: 0
+	left: 0
+	border-top: rgba(#fff, .15) 1px solid
+	padding: 12.5px 0
+	width: 100%
+	background-color: rgba(#151515, .15)
+	.fa
+		margin-right: 15px
+		color: #555
+	.phone-h
+		font-family: firasans, sans-serif
+		text-align: center
+
+
+// length($list) - Returns the length of a list
+// nth($list, $n) - Returns a specific item in a list.
+// Можно использовать переменные SassScript в селекторах 
+// и в названиях свойств  - синтаксис #{} интерполяции
+// Подробнее об этом - https://sass-scss.ru/documentation/sassscript/mapi.html
+
+$colors: $blue, $red, $accent
+@for $i from 1 through length($colors)
+	.carousel-sevices .owl-item:nth-child(#{length($colors)}n + #{$i})
+		background-color: nth($colors, $i)
+
+.carousel-sevices
+	background-color: $dark
+
+	&-item
+		color: #fff
+		font-size: 18px
+		font-weight: 300
+		position: relative
+		display: flex
+		flex-direction: column-reverse
+		&:hover
+			.carousel-sevices-image
+				opacity: 1
+		.carousel-logo
+			text-align: center
+			img
+				width: 100px
+				height: auto
+				display: inline-block
+
+	&-image
+		background-size: cover
+		background-position: center
+		opacity: .7
+		transition: opacity 0.5s ease
+
+	&-content
+		// display: flex
+		position: relative
+		padding: 60px 10%
+
+	&-composition
+		text-align: center
+		margin: auto
+		width: 100%
+		// display: flex
+		// flex-direction: column
+		h3
+			font-weight: 800
+			font-size: 28px
+			margin-top: 5px
+			margin-bottom: 20px
+			span
+				font-weight: normal
+				font-size: 18px
+				font-weight: 300
+				display: block
+		// a
+		// 	justify-content: space-between
+
+	&-list
+		padding: 0
+		margin: 0
+		list-style-type: none
+		margin-bottom: 25px
+		li
+			padding: 10px
+			border-bottom: 1px solid rgba(#000, .12)
+			&:last-child
+				border-bottom: none
+			strong
+				font-family: firasans, sans-serif
+				color: #4a4a4a
+				.fa
+					font-size: 14px
+
+	.owl-nav
+		position: absolute
+		top: 0
+		width: 100%
+		> div
+				width: 64px
+				height: 64px
+				// border-radius: 100%
+				background-color: #fff
+				color: $dark
+				position: absolute
+				text-align: center
+				line-height: 64px
+				font-size: 26px
+				&.owl-prev
+					left: 0
+				&.owl-next
+					right: 0
+
+
+
+
+
+.owl-item
+	&:nth-child(2n+2)
+		.carousel-sevices-item
+			flex-direction: column
+
+//должна ли быть видна задняя сторона элемента или нет, когда фронтальная сторона не повернута
+.owl-carousel
+	.owl-item
+		backface-visibility: inherit
+
+// Фоторама
+
+.s
+	&-king, &-review, &-partners
+		padding: 5% 0	
+	&-king
+		p
+			margin: 30px 0
+			font-size: 18px
+
+	&-call
+		background-size: contain
+		background-repeat: no-repeat
+		background-position: -20% 10%
+		&::before
+			content: ''
+			position: absolute
+			width: 50%
+			height: 100%
+			right: 0
+			top: 0
+			bottom: 0
+			background-color: rgba($accent, 0.92)
+		&.inverse
+			background-color: #fff
+
+	&-partners.section-overlay
+		&::before
+			background-color: #fff
+		.h2
+			margin-top: 10px
+			span
+				color: $accent
+
+
+
+.section-overlay
+	&::before
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		background-color: $over
+		opacity: .92
+
+.fotorama
+	background-color: rgba($dark, .4)
+	// &__video-play
+	// 	background: url(/img/fotorama.png) // попытка избавиться от png-картинок
+	&__nav
+		&-wrap
+			position: absolute
+			bottom: 15px
+			padding: 0 30px
+			width: 100%
+	&__thumb
+		border: 5px #fff solid
+		transition: border-color .5s ease
+		&-border
+			border-color: darken($accent, 30%)
+	&__nav:before, &__stage:before, &__nav:after, &__stage:after
+		display: none
+	&__arr-
+		&-next, &-prev
+			&::before
+				font-family: fontawesome
+				font-size: 36px
+		&-prev
+			&::before
+				content: '\f104'
+		&-next
+			&::before
+				content: '\f105'
+	&__active
+		.fotorama__thumb
+			border-color: darken($accent, 30%)
+			
+.s-king .fotorama__wrap--css3 .fotorama__arr
+		transform: translate3d(8px, 0, 0) // позиционируем стрелки 
+
+input, textarea, select,
+.selectize-control.single .selectize-input,
+.selectize-control.single .selectize-input.input-active,
+	background-color: transparent
+	border: rgba(#000, .1) 1px solid
+	border-bottom: rgba(#000, .1) 2px solid
+	border-radius: 2px
+	padding: 8px 22px
+	outline: none
+	display: inline-block
+	font-size: 16px
+	color: #333
+select
+	padding: 10px 22px
+
+.selectize-control.single .selectize-input
+	margin-top: 17px
+	color: #fff
+	box-shadow: none
+	overflow: inherit
+	line-height: inherit
+	text-align: left
+	input
+		font-size: 16px
+	&.focus
+		box-shadow: none
+		// box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
+	&.dropdown-active::before
+		background: transparent
+	&::after
+		border: none
+		content: '\f107'
+		font-family: fontawesome
+		position: absolute
+		right: 30px
+		top: 12px
+	&.dropdown-active:after
+		content: '\f106'
+
+.selectize-control.single
+	.selectize-dropdown 
+		font-size: 15px
+		border: none
+		border-radius: 0
+		text-align: left
+		&-content
+			.option
+				padding: 10px 22px
+				&.active 
+					background-color: lighten($accent, 15%)
+
+.success
+	display: none
+	position: absolute
+	top: 0
+	left: 0
+	bottom: 0
+	right: 0
+	text-transform: uppercase
+	font-weight: bold
+	// display: flex
+	z-index: 10
+	span
+		margin: auto
+	& ~ *
+		transition: all 0.5s ease
+	&.active
+		& ~ *
+			opacity: .5
+			filter: blur(12px)
+
+
+
+.callback
+	padding: 25% 0
+	position: relative
+	&-logo
+		img
+			width: 100px
+			height: auto
+
+	.formhead
+		margin: 0
+		font-size: 30px
+		color: #fff
+
+	p
+		margin-top: 0
+
+	input, textarea, select
+	 	color: #fff
+	 	width: 100%
+	 	margin-top: 17px
+
+	 	&::-webkit-input-placeholder
+		 	color: #fff
+		 	opacity: 1
+	 	&::-moz-placeholder
+		 	color: #fff
+		 		opacity: 1
+	 	&::-ms-input-placeholder
+	 	 	color: #fff
+
+	input[name="Телефон"]
+		font-family: firasans
+
+	select
+		option
+			color: #333
+
+// Стилизация валидации форм 
+.callback
+	position: relative
+	input.error
+		border-color: darken($red, 7%)
+	label.error
+		color: $red
+		font-size: 10px
+		margin-left: 22px
+	input.valid
+		border-color: lighten($green, 57%)
+
+	.form-message
+		position: absolute
+		bottom: 18%
+		left: 0
+		transform: rotate(-0deg)
+		z-index: 1		
+		text-align: center
+		background-color: lighten($red, 2%)
+		font-size: 14px
+		font-weight: 600	
+			
+		color: #fff
+		display: block
+		padding: 10px
+		width: 100%
+		margin-top: 10px
+		&:empty
+			display: none
+
+	button
+		margin-top: 40px
+
+// конец стилизации валидации формы
+
+.reviews
+	text-align: center
+
+	.owl-dots
+		width: 100%
+		text-align: center
+		margin-top: 40px
+		.owl-dot
+			width: 8px
+			height: 8px
+			background-color: #fff
+			border-radius: 10em
+			display: inline-block
+			margin: 5px
+			transition: background-color .5s ease, transform .5s ease
+			&.active
+				background-color: $accent
+				transform: scale(1.3)
+
+.review
+	margin-top: 20px
+	&-header
+		font-family: 'Times New Roman', serif
+		font-style: italic
+		font-size: 30px
+		font-weight: bold
+	&-date
+		font-family: 'Times New Roman', serif
+		font-style: italic
+		font-size: 14px
+		color: #888
+	&-stars
+		margin: 18px 0 30px
+		font-size: 14px
+		color: $accent
+		.fa
+			margin: 0 2.5px
+	&-text
+		color: #95989A
+		font-weight: 300
+
+.quotes
+	position: absolute
+	width: 100%
+	&::before, &::after
+		content: ',,'
+		position: absolute
+		top: 200px
+		font-size: 56px
+		color: $accent
+		font-family: 'Times New Roman', serif
+		font-weight: bold
+		line-height: 0
+		transform: rotate(180deg)
+		// display: block
+	&::before
+		left: -60px
+	&::after
+		top: 162px
+		right: -60px
+		transform: rotate(0deg)
+
+// Карусель Партнеры
+.s-partners
+	padding-bottom: 7%
+.partners
+	.owl-stage
+		display: flex
+	.owl-item
+		margin-top: 30px
+	.partner
+		display: flex
+		img
+			max-width: 100%
+			width: auto
+			margin: auto
+	.owl-nav
+		position: absolute
+		top: 0
+		width: 100%
+		z-index: 2
+		> div
+			position: absolute
+			top: 32px
+			color: #999
+			font-size: 30px
+			transition: opacity .5s ease
+			padding: 0 10px
+			&:hover
+				opacity: .5
+			&.owl-prev
+				left: -60px
+			&.owl-next
+				right: -60px
+	
+
+
+// Футер 
+
+#my-footer 
+	background: #242424
+	padding: 3% 0
+	color: #fff
+	font-size: 14px
+
+.footer-column
+	margin: 15px 0
+
+.footer-logo	
+	width: 125px
+	height: auto
+	+ p
+		color: #666
+		padding: 0
+		margin:
+			bottom: 15px
+			top: 15px
+		font-size: 14px
+
+.footer-social
+	margin-top: 38px
+	.soc
+		li
+			display: inline-block
+			margin: 4px
+			a
+				color: #ababab
+				margin-bottom: 0
+				transition: color .5s ease, background-color .5s ease
+				&:hover
+					color: rgba(#fff, .8)
+
+.footer-menu
+	ul
+		padding: 0
+		margin: 0
+		list-style-type: none
+		li.active
+			a
+				color: $accent
+				&::before
+					color: $accent
+		li
+			a
+				color: #979797
+				transition: color .25s ease
+				display: inline-block
+				padding: 4px 0
+				text-decoration: underline
+				padding-left: 22px
+				position: relative
+				&:hover, &:focus
+					color: $accent
+					&::before
+						color: $accent
+				&::before
+					position: absolute
+					font-family: fontawesome
+					font-size: 12px
+					color: #fff
+					content: '\f219'
+					left: 0
+					top: 6px
+					transition: color .25s ease
+
+.footer-addr
+	position: relative
+	font-size: 14px
+	line-height: 16px
+	color: #979797
+	padding:
+		left: 26px
+		top: 8px
+	margin: 0 0 14px
+	.fa
+		position: absolute
+		left: 0
+		top: 10px
+		font-size: 18px
+		color: #555
+	.footer-phone
+		font-size: 24px
+		font-family: firasans, sans-serif
+		color: lighten(#979797, 20%)
+		padding-top: 4px
+		display: block
+		white-space: nowrap
+		.fa
+			top: 8px
+			font-size: 22px
+			left: 3px
+.footer-map
+	position: relative
+	min-height: 200px
+	opacity: .7
+	transition: opacity .5s ease
+	&:hover
+		opacity: 1
+		cursor: pointer
+	img
+		position: absolute
+		left: 20%
+		bottom: 20%
+		width: 60%
+		height: 60%
+		background-color: $accent
+		opacity: 0
+	ymaps
+		padding-top: 12px
+
+
+
+.top
+	position: fixed
+	bottom: 25px
+	right: -100px
+	background-color: #e0e0e0
+	z-index: 12
+	border-radius: 10em
+	color: #666
+	font-size: 26px
+	line-height: 50px
+	width: 50px
+	height: 50px
+	text-align: center
+	cursor: pointer
+	transition: all .5s ease
+	opacity: .5
+	&:hover
+		color: #fff
+		background-color: $accent
+		opacity: 1
+	&.active 
+		right: 25px
+
+
+
+@import "media" // Всегда в конце
