@@ -121,7 +121,7 @@ gulp.task('deploy', function() {
 	var conn = ftp.create({
 		host:      'lekua.ftp.ukraine.com.ua',
 		user:      'lekua_ftp',
-		password:  '92g9sgb3',
+		password:  '********',
 		parallel:  10,
 		log: gutil.log
 	});
